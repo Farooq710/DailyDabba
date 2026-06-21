@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DailyDabba</string>
+    <string name="title_activity_main">DailyDabba</string>
+    <string name="package_name">com.dailydabba.app</string>
+    <string name="custom_url_scheme">com.dailydabba.app</string>
+</resources>

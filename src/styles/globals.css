@@ -1,0 +1,103 @@
+@import './fonts.css';
+@import 'tailwindcss';
+
+/* ============================================
+   DailyDabba — Global Styles
+   Tailwind v4 + custom design tokens
+   ============================================ */
+
+@theme {
+  --color-primary: #F97316;
+  --color-primary-light: #FFF7ED;
+  --color-primary-deep: #C2410C;
+  --color-surface: #FAFAFA;
+  --color-surface-raised: #FFFFFF;
+  --color-surface-muted: #F3F4F6;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6B7280;
+  --color-text-tertiary: #9CA3AF;
+  --color-success: #16A34A;
+  --color-danger: #DC2626;
+  --color-warning: #D97706;
+  --color-border: #E5E7EB;
+
+  --font-sans: 'Noto Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+  --font-telugu: 'Noto Sans Telugu', system-ui, sans-serif;
+  --font-tamil: 'Noto Sans Tamil', system-ui, sans-serif;
+  --font-kannada: 'Noto Sans Kannada', system-ui, sans-serif;
+  --font-malayalam: 'Noto Sans Malayalam', system-ui, sans-serif;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans', system-ui, sans-serif;
+  background-color: #FAFAFA;
+  color: #111827;
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+/* Hide scrollbar by default for mobile feel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Subtle scrollbar where shown */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Desktop: show side description */
+@media (min-width: 1024px) {
+  #desktop-desc {
+    display: flex !important;
+  }
+}

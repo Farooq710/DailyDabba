@@ -1,5 +1,8 @@
 import { AnimatePresence, motion } from 'motion/react';
+import { Capacitor } from '@capacitor/core';
 import { AppProvider, useApp, type AppScreen } from './context/AppContext';
+
+const isNative = Capacitor.isNativePlatform();
 import { WelcomeScreen } from './components/screens/WelcomeScreen';
 import { OnboardingScreen } from './components/screens/OnboardingScreen';
 import { AuthScreen } from './components/screens/AuthScreen';
@@ -84,8 +87,16 @@ function AppInner() {
   }
 
   return (
-    <div className="flex flex-col h-full overflow-hidden" style={{ backgroundColor: '#FAFAFA' }}>
-      <StatusBar />
+    <div
+      className="flex flex-col overflow-hidden"
+      style={{
+        backgroundColor: '#FAFAFA',
+        height: '100%',
+        paddingTop: isNative ? 'env(safe-area-inset-top)' : undefined,
+        paddingBottom: isNative ? 'env(safe-area-inset-bottom)' : undefined,
+      }}
+    >
+      {!isNative && <StatusBar />}
       <div className="flex-1 overflow-hidden relative min-h-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -102,7 +113,7 @@ function AppInner() {
         <Toast />
       </div>
       {isTabScreen && <BottomNav />}
-      <HomeIndicator />
+      {!isNative && <HomeIndicator />}
     </div>
   );
 }
@@ -137,6 +148,16 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  if (isNative) {
+    return (
+      <AppProvider>
+        <div className="w-screen h-screen overflow-hidden">
+          <AppInner />
+        </div>
+      </AppProvider>
+    );
+  }
+
   return (
     <AppProvider>
       <div
@@ -147,23 +168,6 @@ export default function App() {
           minHeight: '100vh',
         }}
       >
-        {/* Side description — desktop only */}
-        <div
-          className="flex-col gap-4 mr-12 text-white"
-          style={{ display: 'none' }}
-          id="desktop-desc"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.2)' }}>
-              <span style={{ fontSize: 24 }}>🍱</span>
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold" style={{ fontFamily: 'Noto Sans, sans-serif' }}>DailyDabba</h1>
-              <p className="text-sm" style={{ fontFamily: 'Noto Sans, sans-serif', color: 'rgba(255,255,255,0.7)' }}>Walk-in Order Manager</p>
-            </div>
-          </div>
-        </div>
-
         <PhoneFrame>
           <AppInner />
         </PhoneFrame>

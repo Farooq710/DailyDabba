@@ -36,7 +36,7 @@ function MenuCard({ item, qty, onTap }: { item: MenuItem; qty: number; onTap: ()
       onMouseUp={() => { setPressed(false); onTap(); }}
       onMouseLeave={() => setPressed(false)}
       onTouchStart={() => setPressed(true)}
-      onTouchEnd={() => { setPressed(false); onTap(); }}
+      onTouchEnd={(e) => { e.preventDefault(); setPressed(false); onTap(); }}
       animate={{ scale: pressed ? 0.94 : 1 }}
       transition={{ duration: 0.15 }}
       className="relative flex flex-col items-center justify-center bg-white rounded-xl border overflow-visible focus:outline-none"

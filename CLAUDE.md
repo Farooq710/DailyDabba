@@ -5,7 +5,7 @@
 
 **What this is:** DailyDabba — a walk-in order manager for Indian tiffin centers. Web app (React 18 + Vite + TypeScript + Tailwind v4 + Motion). Exported from Figma Make, now being wired to Supabase.
 
-**App root:** `design/DailyDabba-App/` — all source lives here.
+**App root:** `app/` — all source lives here.
 
 **Current state:**
 - All 9 screens render with full design fidelity

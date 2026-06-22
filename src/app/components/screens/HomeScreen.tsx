@@ -124,10 +124,16 @@ export function HomeScreen() {
     <div className="h-full flex flex-col bg-[#FAFAFA] relative">
       {/* ── Sticky Header ── */}
       <div
-        className="shrink-0 px-4 flex items-center justify-between bg-white border-b border-gray-200"
+        className="shrink-0 px-4 flex items-center bg-white border-b border-gray-200"
         style={{ height: 64, boxShadow: '0 2px 8px rgba(17,24,39,0.06)' }}
       >
-        <div>
+        {/* Left — logo */}
+        <div className="flex items-center" style={{ width: 40 }}>
+          <img src="/logo.png" alt="DailyDabba" style={{ width: 36, height: 36, objectFit: 'contain' }} />
+        </div>
+
+        {/* Center — today's total */}
+        <div className="flex-1 flex flex-col items-center justify-center">
           <div className="flex items-baseline gap-0.5">
             <span style={{ fontSize: 14, color: '#F97316', fontFamily: 'DM Mono, monospace', fontWeight: 700 }}>₹</span>
             <span style={{ fontSize: 26, fontFamily: 'DM Mono, monospace', fontWeight: 700, color: '#111827' }}>
@@ -139,6 +145,7 @@ export function HomeScreen() {
           </div>
         </div>
 
+        {/* Right — close day */}
         <motion.button
           whileTap={{ scale: 0.96 }}
           onClick={handleCloseDay}

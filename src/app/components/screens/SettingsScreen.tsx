@@ -107,7 +107,7 @@ export function SettingsScreen() {
         </h1>
       </div>
 
-      <div className="flex-1 overflow-y-auto pb-8" style={{ scrollbarWidth: 'none' }}>
+      <div className="flex-1 overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
         {/* ── Business ── */}
         <SectionLabel label={t('settings.business_section')} />
         <div className="mx-4 bg-white rounded-xl overflow-hidden border border-gray-100" style={{ boxShadow: '0 1px 4px rgba(17,24,39,0.06)' }}>
@@ -189,9 +189,12 @@ export function SettingsScreen() {
             <ChevronRight size={16} className="text-gray-400 ml-1" />
           </button>
         </div>
+      </div>
 
-        {/* ── Sign Out ── */}
-        <div className="mx-4 mt-4 mb-2 bg-white rounded-xl overflow-hidden border border-gray-100" style={{ boxShadow: '0 1px 4px rgba(17,24,39,0.06)' }}>
+      {/* ── Pinned footer: lockup + sign out ── */}
+      <div className="shrink-0 flex flex-col items-center gap-3 px-4 pt-4 pb-6 border-t border-gray-200 bg-[#F3F4F6]">
+        <img src="/lockup-dark.png" alt="DailyDabba" style={{ height: 28, objectFit: 'contain', opacity: 0.5 }} />
+        <div className="w-full bg-white rounded-xl overflow-hidden border border-gray-100" style={{ boxShadow: '0 1px 4px rgba(17,24,39,0.06)' }}>
           <button
             onClick={() => setConfirmSignOut(true)}
             className="w-full flex items-center justify-center px-4 h-[52px]"

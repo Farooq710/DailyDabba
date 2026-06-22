@@ -78,9 +78,11 @@ export function AuthScreen() {
 
         {/* Logo */}
         <div className="flex items-center gap-2 mb-8">
-          <div className="w-9 h-9 bg-orange-500 rounded-xl flex items-center justify-center">
-            <span style={{ fontSize: 18 }}>🍱</span>
-          </div>
+          <img
+            src="/app-icon-source.png"
+            alt="DailyDabba"
+            style={{ width: 36, height: 36, borderRadius: 9, boxShadow: '0 2px 8px rgba(249,115,22,0.3)' }}
+          />
           <span className="text-lg font-bold text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif' }}>DailyDabba</span>
         </div>
 

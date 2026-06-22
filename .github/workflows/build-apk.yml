@@ -35,6 +35,29 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
+      - name: Generate Android launcher icons
+        run: |
+          ICON_SRC="public/app-icon-source.png"
+          MIPMAP_BASE="android/app/src/main/res"
+
+          gen() {
+            local DPI=$1 SIZE=$2
+            local FG_SIZE=$(( SIZE * 3 / 2 ))
+            local DIR="${MIPMAP_BASE}/mipmap-${DPI}"
+            mkdir -p "$DIR"
+            convert "$ICON_SRC" -resize "${SIZE}x${SIZE}" "$DIR/ic_launcher.png"
+            convert "$ICON_SRC" -resize "${SIZE}x${SIZE}" "$DIR/ic_launcher_round.png"
+            convert -size "${FG_SIZE}x${FG_SIZE}" xc:none \
+              \( "$ICON_SRC" -resize "${SIZE}x${SIZE}" \) \
+              -gravity center -composite "$DIR/ic_launcher_foreground.png"
+          }
+
+          gen mdpi    48
+          gen hdpi    72
+          gen xhdpi   96
+          gen xxhdpi  144
+          gen xxxhdpi 192
+
       - name: Sync to Android
         run: npx cap sync android
 

@@ -25,9 +25,11 @@ export function WelcomeScreen() {
           transition={{ duration: 0.4 }}
           className="flex flex-col items-center gap-2"
         >
-          <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
-            <span style={{ fontSize: 32 }}>🍱</span>
-          </div>
+          <img
+            src="/app-icon-source.png"
+            alt="DailyDabba"
+            style={{ width: 72, height: 72, borderRadius: 18, boxShadow: '0 4px 16px rgba(249,115,22,0.35)' }}
+          />
           <h1 className="text-2xl font-bold text-gray-900" style={{ fontFamily: 'Noto Sans, sans-serif' }}>
             DailyDabba
           </h1>
